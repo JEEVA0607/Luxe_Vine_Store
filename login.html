@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-box {
+            width: 380px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .auth-header h2 {
+            margin: 0 0 8px;
+        }
+
+        .auth-header p {
+            margin: 0;
+            color: #777;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 25px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .tab-btn {
+            width: 50%;
+            padding: 11px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #ff9800;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .auth-form input:focus {
+            border-color: #ff9800;
+        }
+
+        .main-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #ff9800;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .main-btn:hover {
+            background: #f57c00;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background: #f8f8f8;
+        }
+
+        .bottom-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .bottom-text button {
+            border: none;
+            background: none;
+            color: #ff9800;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .phone-section {
+            display: none;
+        }
+
+        .phone-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-box">
+
+        <div class="auth-header">
+            <h2>🍽 Welcome</h2>
+            <p>Login to continue</p>
+        </div>
+
+        <!-- LOGIN / SIGN UP TABS -->
+
+        <div class="tabs">
+
+            <button class="tab-btn active" id="loginTab">
+                LOGIN
+            </button>
+
+            <button class="tab-btn" id="signupTab">
+                SIGN UP
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <div class="auth-form active" id="loginForm">
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email Address">
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password">
+
+            <button
+                class="main-btn"
+                id="loginBtn">
+                Login
+            </button>
+
+
+            <div class="divider">
+                OR
+            </div>
+
+
+            <!-- PHONE LOGIN -->
+
+            <button
+                class="social-btn"
+                id="phoneLoginBtn">
+
+                📱 Continue with Phone
+
+            </button>
+
+
+            <!-- APPLE LOGIN -->
+
+            <button
+                class="social-btn"
+                id="appleLoginBtn">
+
+                 Continue with Apple
+
+            </button>
+
+
+            <div class="bottom-text">
+
+                Don't have an account?
+
+                <button id="goSignup">
+                    Sign Up
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGN UP FORM -->
+
+        <div class="auth-form" id="signupForm">
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Full Name">
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Email Address">
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password">
+
+            <input
+                type="password"
+                id="signupConfirmPassword"
+                placeholder="Confirm Password">
+
+
+            <button
+                class="main-btn"
+                id="signupBtn">
+
+                Create Account
+
+            </button>
+
+            <div id="phoneLoginSection" style="display:none;">
+
+    <input
+        type="tel"
+        id="phoneNumber"
+        placeholder="+94 7XXXXXXXX"
+    >
+
+    <div id="recaptcha-container"></div>
+
+    <button
+        class="main-btn"
+        id="sendOtpBtn">
+        Send OTP
+    </button>
+
+    <input
+        type="text"
+        id="otpCode"
+        placeholder="Enter 6-digit OTP"
+        maxlength="6"
+        style="display:none;"
+    >
+
+    <button
+        class="main-btn"
+        id="verifyOtpBtn"
+        style="display:none;">
+        Verify OTP
+    </button>
+
+</div>
+
+
+
+            <div class="bottom-text">
+
+                Already have an account?
+
+                <button id="goLogin">
+                    Login
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="js/login.js"></script>
+
+</body>
+
+</html>
