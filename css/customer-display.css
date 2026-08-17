@@ -1,0 +1,379 @@
+/* ==========================================
+   🍽️ PREMIUM READY TOKEN DISPLAY
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #243b2b 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #10251a 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #070b09,
+            #111814,
+            #080c0a
+        );
+
+    color:#fff;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    text-align:center;
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==========================================
+   🟢 TITLE
+========================================== */
+
+h1{
+
+    display:inline-block;
+
+    margin:35px auto 10px;
+
+    padding:14px 30px;
+
+    border-radius:18px;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f5132,
+            #198754,
+            #20c997
+        );
+
+    box-shadow:
+        0 10px 30px rgba(32,201,151,.20),
+        inset 0 1px 0 rgba(255,255,255,.20);
+
+    text-shadow:
+        0 3px 8px rgba(0,0,0,.35);
+
+}
+
+
+/* ==========================================
+   ✨ SUBTITLE EFFECT / TITLE GLOW
+========================================== */
+
+h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:55%;
+
+    height:3px;
+
+    margin:8px auto 0;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #69f0ae,
+            transparent
+        );
+
+}
+
+
+/* ==========================================
+   🎫 TOKEN GRID
+========================================== */
+
+#readyTokens{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:0 auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
+
+    gap:22px;
+
+    padding:35px;
+
+}
+
+
+/* ==========================================
+   🎟️ TOKEN CARD
+========================================== */
+
+.token{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:150px;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0f5132,
+            #198754,
+            #20c997
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:52px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 4px 10px rgba(0,0,0,.35);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.35),
+        0 0 20px rgba(32,201,151,.12),
+        inset 0 1px 0 rgba(255,255,255,.20);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* ==========================================
+   ✨ TOKEN SHINE
+========================================== */
+
+.token::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:left .6s ease;
+
+}
+
+
+.token:hover::before{
+
+    left:130%;
+
+}
+
+
+/* ==========================================
+   🟢 TOKEN HOVER
+========================================== */
+
+.token:hover{
+
+    transform:
+        translateY(-7px)
+        scale(1.02);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.45),
+        0 0 30px rgba(32,201,151,.25),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+}
+
+
+/* ==========================================
+   🔢 TOKEN NUMBER
+========================================== */
+
+.token{
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.25),
+        0 4px 10px rgba(0,0,0,.4);
+
+}
+
+
+/* ==========================================
+   📱 TABLET
+========================================== */
+
+@media(max-width:800px){
+
+    h1{
+
+        font-size:34px;
+
+        margin-top:25px;
+
+        padding:12px 24px;
+
+    }
+
+    #readyTokens{
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(170px,1fr)
+            );
+
+        gap:16px;
+
+        padding:20px;
+
+    }
+
+    .token{
+
+        min-height:130px;
+
+        font-size:42px;
+
+        border-radius:18px;
+
+    }
+
+}
+
+
+/* ==========================================
+   📱 MOBILE
+========================================== */
+
+@media(max-width:500px){
+
+    h1{
+
+        font-size:27px;
+
+        padding:11px 18px;
+
+        border-radius:14px;
+
+    }
+
+    #readyTokens{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+
+        padding:15px;
+
+    }
+
+    .token{
+
+        min-height:110px;
+
+        padding:15px;
+
+        font-size:34px;
+
+        border-radius:15px;
+
+    }
+
+}
+
+
+/* ==========================================
+   💻 LARGE SCREEN
+========================================== */
+
+@media(min-width:1400px){
+
+    #readyTokens{
+
+        grid-template-columns:
+            repeat(5,1fr);
+
+    }
+
+    .token{
+
+        min-height:170px;
+
+        font-size:58px;
+
+    }
+
+}

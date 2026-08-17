@@ -1,0 +1,2660 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+
+body{
+
+    background:#f5f5f5;
+    color:#222;
+
+}
+
+
+.header{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 20px;
+
+background:linear-gradient(135deg,#ff9800,#ff6f00);
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+
+.categories{
+
+    display:flex;
+    gap:10px;
+
+    padding:15px;
+
+    overflow-x:auto;
+
+}
+
+
+.category{
+
+    border:none;
+
+    background:white;
+
+    padding:12px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+}
+
+
+.category.active{
+
+    background:#ff9800;
+
+    color:white;
+
+}
+
+
+
+.food-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+padding:20px;
+
+}
+
+
+.food-image{
+
+width:100%;
+
+height:180px;
+
+background:#eee;
+
+overflow:hidden;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.food-card h3{
+
+text-align:center;
+
+width:100%;
+
+margin:10px 0;
+
+font-size:18px;
+
+font-weight:700;
+
+}
+
+
+
+.price{
+
+text-align:center;
+
+color:#ff9800;
+
+font-size:18px;
+
+font-weight:bold;
+
+margin-top:8px;
+
+}
+
+
+
+.qty-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:12px;
+
+}
+
+
+.qty-box button{
+
+width:38px;
+
+height:38px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ff9800;
+
+color:#fff;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.qty-box button:hover{
+
+transform:scale(1.08);
+
+background:#ff7b00;
+
+}
+
+
+
+.add-cart{
+
+width:100%;
+
+margin-top:15px;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,#ff9800,#ff6f00);
+
+color:#fff;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 6px 15px rgba(255,152,0,.35);
+
+}
+
+.add-cart:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(255,152,0,.45);
+
+}
+
+.add-cart:active{
+
+transform:scale(.97);
+
+}
+
+.cart-total{
+
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+
+}
+
+
+#placeOrder{
+
+    width:100%;
+    padding:15px;
+
+    background:#ff9800;
+    color:white;
+
+    border:none;
+    border-radius:12px;
+
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+#timeline{
+
+    margin:20px 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.step{
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#e5e5e5;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.step.active{
+
+    background:#28a745;
+
+    color:#fff;
+
+}
+
+.food-card{
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+transition:.25s;
+
+}
+
+.food-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.food-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.no-image{
+
+font-size:60px;
+
+}
+
+.logo-area h1{
+
+color:white;
+
+font-size:24px;
+
+margin:0;
+
+}
+
+.logo-area p{
+
+color:rgba(255,255,255,.85);
+
+font-size:13px;
+
+margin-top:4px;
+
+}
+
+.header-buttons{
+
+display:flex;
+
+gap:10px;
+
+}
+
+#cartBtn,
+#myOrdersBtn{
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:30px;
+
+background:white;
+
+color:#ff7b00;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+}
+
+#cartBtn:hover,
+#myOrdersBtn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.logo-area{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.header-logo{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+background:white;
+
+display:none;
+
+}
+
+#restaurantTitle{
+
+margin:0;
+
+color:white;
+
+font-size:22px;
+
+}
+
+#restaurantTag{
+
+margin:2px 0 0;
+
+font-size:12px;
+
+color:rgba(255,255,255,.9);
+
+}
+
+.orders-list{
+
+padding:15px;
+
+}
+
+.order-card{
+
+background:#fff;
+
+border-radius:15px;
+
+padding:15px;
+
+margin-bottom:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.order-card:hover{
+
+transform:translateY(-2px);
+
+}
+
+.order-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:10px;
+
+}
+
+.order-status{
+
+padding:5px 10px;
+
+border-radius:20px;
+
+font-size:13px;
+
+font-weight:bold;
+
+background:#eee;
+
+}
+
+.order-total{
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#ff7b00;
+
+margin-top:10px;
+
+}
+
+.remove-cart-btn{
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ff3b30;
+
+color:#fff;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.remove-cart-btn:hover{
+
+transform:scale(1.08);
+
+background:#d92d20;
+
+}
+
+.out-stock{
+
+width:100%;
+
+margin-top:15px;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+background:#9e9e9e;
+
+color:white;
+
+font-size:15px;
+
+font-weight:bold;
+
+cursor:not-allowed;
+
+opacity:.9;
+
+}
+
+.food-image{
+
+position:relative;
+
+}
+
+.stock-badge{
+
+position:absolute;
+
+top:10px;
+
+left:10px;
+
+background:red;
+
+color:white;
+
+padding:6px 10px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+}
+
+.search-box{
+
+padding:15px;
+
+background:#fff;
+
+position:sticky;
+
+top:70px;
+
+z-index:99;
+
+}
+
+.search-box input{
+
+width:100%;
+
+padding:14px;
+
+border:2px solid #a04545;
+
+border-radius:30px;
+
+font-size:16px;
+
+outline:none;
+
+transition:.2s;
+
+}
+
+.search-box input:focus{
+
+border-color:#ff9800;
+
+}
+
+.restaurant-status{
+
+padding:10px;
+
+text-align:center;
+
+font-weight:bold;
+
+color:white;
+
+background:#28a745;
+
+}
+
+.restaurant-status.closed{
+
+background:#dc3545;
+
+}
+
+.restaurant-status{
+
+padding:8px 15px;
+
+border-radius:30px;
+
+font-weight:bold;
+
+display:inline-block;
+
+margin-bottom:12px;
+
+}
+
+.restaurant-status.open{
+
+background:#1b5e20;
+
+color:#7CFC00;
+
+}
+
+.restaurant-status.closed{
+
+background:#8b0000;
+
+color:#fff;
+
+}
+
+.hightech-alert {
+    border-radius: 18px !important;
+    border: 1px solid #333 !important;
+}
+
+.hightech-alert .swal2-title {
+    color: #fff !important;
+}
+
+.swal2-confirm {
+    border-radius: 10px !important;
+    padding: 10px 25px !important;
+    font-weight: 600 !important;
+}
+
+.combo-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.combo-badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+
+    background:#ff5722;
+    color:#fff;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.combo-items{
+    margin-top:10px;
+    background:#f7f7f7;
+
+    padding:10px;
+
+    border-radius:10px;
+}
+
+.combo-item{
+    font-size:13px;
+    padding:4px 0;
+
+    color:#555;
+}
+
+.combo-price{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:12px;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:14px;
+}
+
+.offer-price{
+    color:#ff5722;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.combo-saving{
+    margin-top:6px;
+
+    color:#2e7d32;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.add-combo-cart{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:11px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff5722;
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.add-combo-cart:hover{
+    background:#e64a19;
+    transform:translateY(-1px);
+}
+
+.no-combo{
+    width:100%;
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#888;
+}
+
+.location-btn{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:#ff6b00;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.location-btn:hover{
+    background:#e85f00;
+}
+
+.location-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+#locationStatus{
+    line-height:1.5;
+}
+
+#distanceResult{
+    padding:10px;
+    border-radius:10px;
+    background:#f5f5f5;
+}
+
+.delivery-available{
+    color:#168a3a;
+    background:#e9f8ee !important;
+}
+
+.delivery-unavailable{
+    color:#c62828;
+    background:#ffebee !important;
+}
+
+/* ==========================================
+   PREMIUM BACK TO MENU BUTTON
+========================================== */
+
+#backMenu{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:11px 20px;
+
+    border:none;
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #af8038,
+        #ff6f00
+    );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:.2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 6px 18px rgba(255,111,0,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+
+}
+
+
+/* Hover */
+
+#backMenu:hover{
+
+    background:linear-gradient(
+        135deg,
+        #ffab00,
+        #ff5722
+    );
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(255,111,0,.35);
+
+}
+
+
+/* Click */
+
+#backMenu:active{
+
+    transform:scale(.96);
+
+    box-shadow:
+        0 4px 10px rgba(255,111,0,.2);
+
+}
+
+
+/* Keyboard Focus */
+
+#backMenu:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(255,152,0,.25),
+        0 8px 20px rgba(255,111,0,.3);
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    #backMenu{
+
+        width:100%;
+
+        padding:13px 18px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* ==========================================
+   PREMIUM MENU BUTTON
+========================================== */
+
+button[onclick*="index.html"]{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:11px 20px;
+
+    border:none;
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #413e3a,
+        #d4884e
+    );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:.2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 6px 18px rgba(255,111,0,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+
+}
+
+
+/* Hover */
+
+button[onclick*="index.html"]:hover{
+
+    background:linear-gradient(
+        135deg,
+        #ffab00,
+        #ff5722
+    );
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(255,111,0,.35);
+
+}
+
+
+/* Click */
+
+button[onclick*="index.html"]:active{
+
+    transform:scale(.96);
+
+}
+
+
+/* Focus */
+
+button[onclick*="index.html"]:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(255,152,0,.25),
+        0 8px 20px rgba(255,111,0,.3);
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    button[onclick*="index.html"]{
+
+        width:100%;
+
+        padding:13px 18px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* ==========================================
+   🔥 COLORFUL PREMIUM ORDER CARD
+========================================== */
+
+.orders-list{
+    padding:20px;
+    max-width:900px;
+    margin:0 auto;
+}
+
+
+/* MAIN CARD */
+
+.order-card{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2b1608 0%,
+            #4a2109 35%,
+            #7b2d0b 70%,
+            #b84b0b 100%
+        );
+
+    border:none;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    color:#fff;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 30px rgba(92,35,5,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* GOLD GLOW */
+
+.order-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-90px;
+    right:-70px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,193,7,.35),
+            transparent 70%
+        );
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+
+/* ORANGE LIGHT */
+
+.order-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    bottom:-70px;
+    left:-50px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,111,0,.30),
+            transparent 70%
+        );
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+
+/* HOVER */
+
+.order-card:hover{
+
+    transform:translateY(-6px) scale(1.01);
+
+    box-shadow:
+        0 20px 45px rgba(70,25,0,.45),
+        0 0 25px rgba(255,111,0,.18);
+}
+
+
+/* CLICK */
+
+.order-card:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* ==========================================
+   ORDER TOP
+========================================== */
+
+.order-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:15px;
+
+    margin-bottom:15px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.15);
+
+}
+
+
+.order-top h3{
+
+    margin:0;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.order-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:7px 13px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2e7d32,
+            #43a047
+        );
+
+    color:#fff;
+
+    border:1px solid
+        rgba(255,255,255,.2);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.2);
+}
+
+
+/* STATUS DOT */
+
+.order-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    background:#b9ffb9;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 0 3px rgba(185,255,185,.15),
+        0 0 10px #8cff8c;
+
+}
+
+
+/* ==========================================
+   ORDER DETAILS
+========================================== */
+
+.order-card > div:not(.order-top):not(.order-total){
+
+    color:#ffe9d2;
+
+    font-size:14px;
+
+    margin-top:10px;
+
+    font-weight:500;
+
+}
+
+
+/* ==========================================
+   TOTAL
+========================================== */
+
+.order-total{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    margin-top:18px;
+
+    padding-top:15px;
+
+    border-top:
+        1px dashed
+        rgba(255,255,255,.2);
+
+    color:#ffd54f;
+
+    font-size:24px;
+
+    font-weight:900;
+
+    text-shadow:
+        0 2px 8px rgba(255,193,7,.25);
+
+}
+
+
+/* TOTAL LABEL */
+
+.order-total::before{
+
+    content:"TOTAL";
+
+    margin-right:auto;
+
+    color:#ffcc80;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+}
+
+
+/* ==========================================
+   PREMIUM SHINE
+========================================== */
+
+.order-card{
+
+    background-size:200% 200%;
+
+    animation:
+        cardGradient 6s ease infinite;
+}
+
+
+@keyframes cardGradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .orders-list{
+
+        padding:14px;
+    }
+
+    .order-card{
+
+        padding:18px;
+
+        border-radius:19px;
+    }
+
+    .order-top h3{
+
+        font-size:19px;
+    }
+
+    .order-status{
+
+        padding:6px 10px;
+
+        font-size:11px;
+    }
+
+    .order-card > div:not(.order-top):not(.order-total){
+
+        font-size:13px;
+    }
+
+    .order-total{
+
+        font-size:21px;
+    }
+
+}
+
+/* ==========================================
+   🔥 PREMIUM COMBO ADD BUTTON
+========================================== */
+
+.combo-add-btn{
+
+    width:100%;
+
+    padding:14px 20px;
+
+    margin-top:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff6f00,
+            #e65100
+        );
+
+    background-size:200% 200%;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    letter-spacing:.3px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 8px 20px rgba(255,111,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background-position .4s ease;
+
+}
+
+
+/* ✨ Shine effect */
+
+.combo-add-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:left .5s ease;
+
+}
+
+
+/* Hover */
+
+.combo-add-btn:hover{
+
+    transform:translateY(-3px);
+
+    background-position:100% 50%;
+
+    box-shadow:
+        0 12px 28px rgba(255,111,0,.45),
+        0 0 15px rgba(255,152,0,.25);
+}
+
+
+.combo-add-btn:hover::before{
+
+    left:130%;
+
+}
+
+
+/* Click */
+
+.combo-add-btn:active{
+
+    transform:scale(.96);
+
+    box-shadow:
+        0 5px 12px rgba(255,111,0,.3);
+
+}
+
+
+/* Keyboard focus */
+
+.combo-add-btn:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(255,193,7,.25),
+        0 10px 25px rgba(255,111,0,.4);
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .combo-add-btn{
+
+        padding:15px;
+
+        font-size:15px;
+
+        border-radius:13px;
+
+    }
+
+}
+
+/* ==========================================
+   🍰 PREMIUM COMBO ITEMS
+========================================== */
+
+.combo-items{
+
+    margin-top:14px;
+
+    padding:13px 15px;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff3e0,
+            #ffe0b2
+        );
+
+    border:1px solid rgba(255,152,0,.20);
+
+    color:#6d3b12;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    line-height:1.6;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8),
+        0 4px 12px rgba(255,152,0,.08);
+
+    position:relative;
+
+}
+
+
+/* Small label before combo items */
+
+.combo-items::before{
+
+    content:"🍰 COMBO INCLUDES";
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#e65100;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+
+/* ==========================================
+   💰 COMBO PRICES
+========================================== */
+
+.combo-prices{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:15px;
+
+    padding:5px 0;
+
+}
+
+
+/* Old price */
+
+.combo-old-price{
+
+    color:#999;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-decoration:line-through;
+
+    text-decoration-thickness:2px;
+
+    text-decoration-color:#ef5350;
+
+}
+
+
+/* Offer price */
+
+.combo-offer-price{
+
+    color:#e65100;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    letter-spacing:.3px;
+
+    text-shadow:
+        0 2px 8px rgba(230,81,0,.15);
+
+}
+
+
+/* Small SALE badge */
+
+.combo-prices::after{
+
+    content:"OFFER";
+
+    padding:5px 8px;
+
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5722,
+            #e64a19
+        );
+
+    color:#fff;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.7px;
+
+    box-shadow:
+        0 4px 10px rgba(230,74,25,.25);
+
+}
+
+
+/* ==========================================
+   💚 COMBO SAVING
+========================================== */
+
+.combo-saving{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:8px;
+
+    padding:7px 11px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f5e9,
+            #c8e6c9
+        );
+
+    border:1px solid #a5d6a7;
+
+    color:#1b7a32;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    box-shadow:
+        0 4px 10px rgba(46,125,50,.10);
+
+}
+
+
+/* Add saving icon */
+
+.combo-saving::before{
+
+    content:"💸";
+
+    font-size:13px;
+
+}
+
+
+/* ==========================================
+   ✨ HOVER EFFECT
+========================================== */
+
+.combo-card:hover .combo-items{
+
+    border-color:rgba(255,111,0,.35);
+
+    box-shadow:
+        0 5px 15px rgba(255,152,0,.12);
+
+}
+
+
+.combo-card:hover .combo-offer-price{
+
+    color:#ff5722;
+
+}
+
+
+/* ==========================================
+   📱 MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .combo-items{
+
+        padding:12px;
+
+        font-size:12px;
+
+    }
+
+    .combo-offer-price{
+
+        font-size:22px;
+
+    }
+
+    .combo-old-price{
+
+        font-size:13px;
+
+    }
+
+    .combo-saving{
+
+        font-size:11px;
+
+    }
+
+}
+
+/* ==========================================
+   🎯 CENTER ALIGN COMBO CONTENT
+========================================== */
+
+.combo-items{
+    text-align:center;
+}
+
+.combo-items::before{
+    text-align:center;
+}
+
+
+.combo-prices{
+    justify-content:center;
+    text-align:center;
+}
+
+
+.combo-saving{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:max-content;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+.combo-section h2,
+.combo-section p{
+    text-align:center;
+}
+
+/* ==========================================
+   🔥 PREMIUM QUANTITY BOX
+========================================== */
+
+.qty-box{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:14px;
+
+    padding:8px 12px;
+
+    width:max-content;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff3e0,
+            #ffe0b2
+        );
+
+    border:1px solid rgba(255,152,0,.25);
+
+    box-shadow:
+        0 5px 15px rgba(255,111,0,.12);
+
+}
+
+
+/* Quantity Buttons */
+
+.qty-box button{
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff6f00
+        );
+
+    color:#fff;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 12px rgba(255,111,0,.30);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* Hover */
+
+.qty-box button:hover{
+
+    transform:translateY(-2px) scale(1.05);
+
+    box-shadow:
+        0 8px 18px rgba(255,111,0,.40);
+
+}
+
+
+/* Click */
+
+.qty-box button:active{
+
+    transform:scale(.90);
+
+}
+
+
+/* Quantity Number */
+
+.qty-box span{
+
+    min-width:32px;
+
+    text-align:center;
+
+    color:#6d3b12;
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .qty-box{
+
+        gap:14px;
+
+        padding:7px 10px;
+
+    }
+
+    .qty-box button{
+
+        width:36px;
+
+        height:36px;
+
+        border-radius:11px;
+
+    }
+
+    .qty-box span{
+
+        font-size:19px;
+
+    }
+
+}
+
+.food-image img{
+    border:2px solid rgba(255,152,0,.45);
+    
+}
+
+/* ==========================================
+   🍰 PREMIUM CATEGORY BUTTONS
+========================================== */
+
+.category{
+
+    border:1px solid rgba(255,152,0,.20);
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8ef,
+            #ffe0b2
+        );
+
+    color:#6d3b12;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 14px rgba(255,111,0,.10);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+/* Hover */
+
+.category:hover{
+
+    transform:translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffcc80,
+            #ff9800
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 8px 20px rgba(255,111,0,.28);
+}
+
+
+/* Active */
+
+.category.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff6f00,
+            #e65100
+        );
+
+    color:#fff;
+
+    border-color:transparent;
+
+    box-shadow:
+        0 7px 18px rgba(255,111,0,.35);
+
+    transform:translateY(-1px);
+}
+
+
+/* Click */
+
+.category:active{
+
+    transform:scale(.94);
+
+}
+
+
+/* ==========================================
+   📱 MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .categories{
+
+        gap:8px;
+
+        padding:12px;
+
+    }
+
+    .category{
+
+        padding:10px 16px;
+
+        font-size:13px;
+
+    }
+
+}
+
+/* ==========================================
+   🟢 OPEN NOW - ANIMATED
+   POSITION UNCHANGED
+========================================== */
+
+#restaurantStatus.open{
+
+    position:relative;
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    margin-bottom:12px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #063b20,
+            #087f45,
+            #0bbf68
+        );
+
+    color:#b9ffcf;
+
+    font-weight:900;
+
+    letter-spacing:.5px;
+
+    border:1px solid rgba(105,255,170,.55);
+
+    box-shadow:
+        0 6px 18px rgba(0,255,120,.20),
+        0 0 18px rgba(0,255,120,.12),
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    overflow:hidden;
+
+    animation:restaurantGlow 2s ease-in-out infinite;
+
+}
+
+
+/* ✨ Moving Shine */
+
+#restaurantStatus.open::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.30),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:restaurantShine 3s infinite;
+
+}
+
+
+/* 💚 Glow */
+
+@keyframes restaurantGlow{
+
+    0%,
+    100%{
+
+        box-shadow:
+            0 6px 18px rgba(0,255,120,.20),
+            0 0 15px rgba(0,255,120,.10),
+            inset 0 1px 0 rgba(255,255,255,.15);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 8px 25px rgba(0,255,120,.35),
+            0 0 30px rgba(0,255,120,.25),
+            inset 0 1px 0 rgba(255,255,255,.20);
+
+    }
+
+}
+
+
+/* ✨ Shine Animation */
+
+@keyframes restaurantShine{
+
+    0%{
+        left:-120%;
+    }
+
+    45%,
+    100%{
+        left:130%;
+    }
+
+}
+
+
+/* 🔴 CLOSED - Same Position */
+
+#restaurantStatus.closed{
+
+    position:relative;
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    margin-bottom:12px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4a0808,
+            #8b0000,
+            #c62828
+        );
+
+    color:#fff;
+
+    border:1px solid rgba(255,100,100,.45);
+
+    box-shadow:
+        0 6px 18px rgba(255,0,0,.20);
+
+}
+
+/* ==========================================
+   🛒📦 PREMIUM HEADER BUTTONS
+   POSITION UNCHANGED
+========================================== */
+
+#cartBtn,
+#myOrdersBtn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fff3e0
+        );
+
+    color:#e65100;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,152,0,.25);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.15),
+        0 0 12px rgba(255,152,0,.08);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        color .25s ease,
+        background .25s ease;
+}
+
+
+/* ==========================================
+   ✨ MOVING SHINE
+========================================== */
+
+#cartBtn::before,
+#myOrdersBtn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.75),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        headerButtonShine 3.5s infinite;
+
+}
+
+
+/* ==========================================
+   🛒 CART BUTTON
+========================================== */
+
+#cartBtn{
+
+    animation:
+        cartFloat 2.5s ease-in-out infinite;
+}
+
+
+#cartBtn:hover{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff6f00
+        );
+
+    transform:translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 10px 25px rgba(255,111,0,.35),
+        0 0 18px rgba(255,152,0,.20);
+
+}
+
+
+/* ==========================================
+   📦 ORDERS BUTTON
+========================================== */
+
+#myOrdersBtn{
+
+    animation:
+        orderFloat 2.5s ease-in-out infinite .4s;
+}
+
+
+#myOrdersBtn:hover{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #e65100
+        );
+
+    transform:translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 10px 25px rgba(255,111,0,.35),
+        0 0 18px rgba(255,152,0,.20);
+
+}
+
+
+/* ==========================================
+   👆 CLICK
+========================================== */
+
+#cartBtn:active,
+#myOrdersBtn:active{
+
+    transform:scale(.94);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.18);
+
+}
+
+
+/* ==========================================
+   ✨ SHINE
+========================================== */
+
+@keyframes headerButtonShine{
+
+    0%{
+        left:-120%;
+    }
+
+    45%,
+    100%{
+        left:130%;
+    }
+
+}
+
+
+/* ==========================================
+   🛒 SUBTLE FLOAT
+========================================== */
+
+@keyframes cartFloat{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-2px);
+    }
+
+}
+
+
+/* ==========================================
+   📦 SUBTLE FLOAT
+========================================== */
+
+@keyframes orderFloat{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-2px);
+    }
+
+}
+
+
+/* ==========================================
+   📱 MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    #cartBtn,
+    #myOrdersBtn{
+
+        padding:10px 13px;
+
+        font-size:13px;
+
+        border-radius:25px;
+
+    }
+
+}
+
+button[onclick*="changeCartQty"] {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    color: rgb(161, 60, 60);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button[onclick*="changeCartQty(0, -1)"] {
+    background: #5c1616;
+}
+
+button[onclick*="changeCartQty(0, 1)"] {
+    background: #1a9c4a;
+}
+
+button[onclick*="changeCartQty(0, -1)"]:hover {
+    background: #affc4a;
+}
+
+button[onclick*="changeCartQty(0, 1)"]:hover {
+    background: #1aec67;
+}
+
+
+/* =====================================================
+   E-COMMERCE CUSTOMER HEADER - MOBILE FIX
+   IDs/classes unchanged
+===================================================== */
+
+@media (max-width: 600px) {
+
+    body:has(.logo-area) .header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "status status"
+            "brand buttons";
+        gap: 8px 10px;
+        padding: 10px 12px;
+        align-items: center;
+    }
+
+    .header .restaurant-status {
+        grid-area: status;
+        width: 100%;
+        margin: 0;
+        padding: 6px 10px;
+        font-size: 12px;
+        line-height: 1.2;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .logo-area {
+        grid-area: brand;
+        min-width: 0;
+        width: 100%;
+        gap: 8px;
+        overflow: hidden;
+    }
+
+    .header-logo {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+    }
+
+    #restaurantTitle {
+        min-width: 0;
+        max-width: 100%;
+        font-size: 18px;
+        line-height: 1.15;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #restaurantTag {
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .header-buttons {
+        grid-area: buttons;
+        display: flex;
+        flex: 0 0 auto;
+        gap: 6px;
+        align-items: center;
+    }
+
+    #cartBtn,
+    #myOrdersBtn {
+        padding: 9px 10px;
+        min-height: 40px;
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+        border-radius: 12px;
+    }
+
+}
+
+/* =====================================================
+   CUSTOMER MODE: HOME DELIVERY ONLY
+   Keep existing IDs/classes for JS compatibility.
+===================================================== */
+
+#dineInOption,
+#takeAwayOption {
+    display: none !important;
+}
+
+#homeDeliveryOption {
+    width: 100%;
+}
+
+
+/* =========================================================
+   MODERN CUSTOMER APP / PRODUCT DETAIL
+   ========================================================= */
+body{padding-bottom:82px}
+
+.customer-bottom-nav{
+ position:fixed;left:0;right:0;bottom:0;height:68px;background:#fff;border-top:1px solid #e8e8e8;display:grid;grid-template-columns:repeat(4,1fr);z-index:2000;box-shadow:0 -5px 18px rgba(0,0,0,.08)
+}
+.bottom-nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:#666;gap:2px;font-size:12px}
+.bottom-nav-item span{font-size:22px;line-height:1}
+.bottom-nav-item.active{color:#ff6f00;font-weight:700}
+.bottom-nav-item small{font-size:11px}
+
+.product-open-area{cursor:pointer}
+.product-gallery{background:#fff;border-radius:18px;padding:14px;box-shadow:0 5px 20px rgba(0,0,0,.07)}
+.product-main-image{width:100%;height:min(58vw,480px);min-height:280px;object-fit:contain;background:#f7f7f7;border-radius:14px}
+.product-thumbs{display:flex;gap:9px;overflow-x:auto;padding-top:10px}
+.product-thumb{flex:0 0 72px;height:72px;border:2px solid transparent;border-radius:10px;overflow:hidden;background:#f5f5f5;cursor:pointer;padding:0}
+.product-thumb.active{border-color:#ff6f00}
+.product-thumb img{width:100%;height:100%;object-fit:cover}
+.product-detail-wrap{max-width:1100px;margin:25px auto;padding:0 18px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:25px}
+.product-detail-info{background:#fff;border-radius:18px;padding:24px;box-shadow:0 5px 20px rgba(0,0,0,.07)}
+.product-detail-info h1{font-size:30px;margin-bottom:10px}
+.product-detail-price{font-size:28px;font-weight:800;color:#ff6f00;margin:15px 0}
+.product-color-options{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 20px}
+.product-color-btn{border:1px solid #ccc;background:#fff;border-radius:9px;padding:9px 14px;cursor:pointer}
+.product-color-btn.active{border-color:#ff6f00;background:#fff3e8;color:#ff6f00}
+.product-detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.product-detail-actions .qty-box{margin:0;justify-content:flex-start;gap:15px}
+.product-detail-actions .add-cart{width:auto;min-width:190px;margin:0}
+.product-buy-btn{border:0;background:#222;color:#fff;border-radius:12px;padding:13px 20px;font-weight:700;cursor:pointer}
+.favorite-btn{border:1px solid #ddd;background:#fff;border-radius:12px;padding:13px 16px;cursor:pointer;font-size:18px}
+.category-page{max-width:1100px;margin:20px auto;padding:0 16px}
+.category-list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px}
+.category-tile{background:#fff;border:1px solid #eee;border-radius:15px;padding:18px;text-align:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.05)}
+.category-tile .icon{font-size:30px;display:block;margin-bottom:7px}
+
+@media(max-width:760px){
+ .product-detail-wrap{grid-template-columns:1fr;margin-top:12px;padding:0 10px}
+ .product-detail-info{padding:18px}
+ .product-detail-info h1{font-size:24px}
+ .product-main-image{height:72vw;min-height:240px}
+}
+
+/* =========================================================
+   CART HORIZONTAL CARD
+   ========================================================= */
+#cartItems{display:flex;flex-direction:column;gap:12px;padding:15px 20px}
+#cartItems .cart-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:15px;align-items:center;background:#fff;border-radius:16px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);min-height:115px}
+#cartItems .cart-item-image{width:96px;height:96px;background:#f3f3f3;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+#cartItems .cart-item-image img{width:100%;height:100%;object-fit:cover}
+#cartItems .cart-item-info{min-width:0}
+#cartItems .cart-item-info h3{margin:0 0 5px;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cartItems .cart-item-info p{margin:5px 0;font-weight:700;color:#ff6f00}
+#cartItems .cart-qty{display:flex;align-items:center;gap:10px;margin-top:7px}
+#cartItems .cart-qty button{width:32px;height:32px;border:0;border-radius:8px;background:#ff9800;color:#fff;font-size:20px;cursor:pointer}
+#cartItems .cart-item-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:15px;height:100%}
+.cart-card-actions{display:flex;gap:6px}
+.wishlist-cart-btn,.remove-cart-btn{border:1px solid #ddd;background:#fff;border-radius:8px;width:34px;height:34px;cursor:pointer}
+.wishlist-cart-btn.active{color:#e53935;border-color:#e53935}
+@media(max-width:600px){#cartItems{padding:10px}#cartItems .cart-item{grid-template-columns:72px minmax(0,1fr) auto;gap:10px;padding:9px}#cartItems .cart-item-image{width:72px;height:72px}#cartItems .cart-item-info h3{font-size:15px}#cartItems .cart-item-right strong{font-size:14px}}

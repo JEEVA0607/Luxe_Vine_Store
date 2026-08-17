@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cart - HighTech Thattukada</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <style>
+
+        .order-type-section{
+            max-width:600px;
+            margin:25px auto;
+            padding:20px;
+            background:#fff;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .order-type-section h3{
+            margin-top:0;
+            margin-bottom:15px;
+        }
+
+        .order-type-options{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:10px;
+        }
+
+        .order-type-option{
+            border:2px solid #ddd;
+            border-radius:12px;
+            padding:15px 8px;
+            text-align:center;
+            cursor:pointer;
+            background:#fff;
+            transition:.2s;
+        }
+
+        .order-type-option input{
+            display:none;
+        }
+
+        .order-type-option.active{
+            border-color:#ff6b00;
+            background:#fff3e8;
+            color:#ff6b00;
+        }
+
+        .order-type-icon{
+            display:block;
+            font-size:28px;
+            margin-bottom:5px;
+        }
+
+        .order-extra-box{
+            margin-top:15px;
+            display:none;
+        }
+
+        .order-extra-box.show{
+            display:block;
+        }
+
+        .order-extra-box label{
+            display:block;
+            font-weight:600;
+            margin-bottom:7px;
+        }
+
+        .order-extra-box input,
+        .order-extra-box textarea{
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            outline:none;
+            font-size:15px;
+        }
+
+        .order-extra-box textarea{
+            min-height:90px;
+            resize:vertical;
+        }
+
+        .location-actions{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .location-actions .location-btn{
+            flex:1 1 220px;
+        }
+
+        .map-location-box{
+            display:none;
+            margin-top:12px;
+            padding:10px;
+            border:1px solid #e5e5e5;
+            border-radius:12px;
+            background:#fafafa;
+        }
+
+        .map-location-box.show{
+            display:block;
+        }
+
+        .map-help-text{
+            font-size:13px;
+            color:#666;
+            margin-bottom:8px;
+        }
+
+        .map-search-box{
+            margin:12px 0;
+            position:relative;
+            z-index:1000;
+        }
+
+        .map-search-row{
+            display:flex;
+            gap:8px;
+        }
+
+        .map-search-input{
+            flex:1;
+            min-width:0;
+            padding:11px 12px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            outline:none;
+            font-size:14px;
+            box-sizing:border-box;
+        }
+
+        .map-search-input:focus{
+            border-color:#ff6b00;
+        }
+
+        .map-search-btn{
+            border:0;
+            border-radius:10px;
+            padding:0 16px;
+            background:#ff6b00;
+            color:#fff;
+            font-weight:600;
+            cursor:pointer;
+            white-space:nowrap;
+        }
+
+        .map-search-results{
+            display:none;
+            position:absolute;
+            left:0;
+            right:0;
+            top:52px;
+            background:#fff;
+            border:1px solid #ddd;
+            border-radius:10px;
+            box-shadow:0 5px 18px rgba(0,0,0,.12);
+            max-height:220px;
+            overflow-y:auto;
+        }
+
+        .map-search-result{
+            display:block;
+            width:100%;
+            border:0;
+            border-bottom:1px solid #eee;
+            background:#fff;
+            text-align:left;
+            padding:11px 12px;
+            cursor:pointer;
+            font-size:13px;
+            line-height:1.35;
+        }
+
+        .map-search-result:last-child{
+            border-bottom:0;
+        }
+
+        .map-search-result:hover{
+            background:#fff3e8;
+        }
+
+        .map-search-message{
+            padding:12px;
+            color:#777;
+            font-size:13px;
+        }
+
+        .delivery-map{
+            width:100%;
+            height:320px;
+            border-radius:10px;
+            overflow:hidden;
+            z-index:1;
+        }
+
+        .map-close-btn{
+            width:100%;
+            margin-top:8px;
+            padding:10px;
+            border:1px solid #ddd;
+            border-radius:9px;
+            background:#fff;
+            cursor:pointer;
+        }
+
+        @media(max-width:600px){
+
+            .order-type-options{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+    
+        @media(max-width:600px){
+            .map-search-row{
+                flex-direction:column;
+            }
+
+            .map-search-btn{
+                min-height:42px;
+            }
+
+            .map-search-results{
+                top:94px;
+            }
+        }
+
+        .saved-address-list{display:grid;gap:8px;margin:8px 0 10px}
+        .saved-address-option{display:flex;gap:10px;align-items:flex-start;border:1px solid #ddd;border-radius:12px;padding:12px;background:#fff;cursor:pointer}
+        .saved-address-option.active{border-color:#ff6f00;background:#fff7ef}
+        .saved-address-option input{margin-top:4px}
+        .cart-summary-row{display:flex;justify-content:space-between;gap:15px;padding:8px 0;border-bottom:1px solid #eee}
+        .cart-grand-total{border-bottom:0;font-size:20px;padding-top:14px}
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>🛒 Your Cart</h1>
+
+</header>
+
+
+<!-- CART -->
+
+<section
+    id="cartItems"
+    class="food-grid">
+</section>
+
+
+<!-- ORDER TYPE -->
+
+<div class="order-type-section">
+
+    <h3>
+        🚚 Delivery Details
+    </h3>
+
+
+    <div class="order-type-options">
+
+
+        <!-- DINE IN -->
+
+        <label
+            class="order-type-option"
+            id="dineInOption"
+        >
+
+            <input
+                type="radio"
+                name="orderType"
+                value="dineIn"
+            >
+
+            <span class="order-type-icon">
+                🍽️
+            </span>
+
+            <strong>
+                Dine In
+            </strong>
+
+        </label>
+
+
+        <!-- TAKE AWAY -->
+
+        <label
+            class="order-type-option"
+            id="takeAwayOption"
+        >
+
+            <input
+                type="radio"
+                name="orderType"
+                value="takeAway"
+            >
+
+            <span class="order-type-icon">
+                🥡
+            </span>
+
+            <strong>
+                Take Away
+            </strong>
+
+        </label>
+
+
+        <!-- HOME DELIVERY -->
+
+        <label
+            class="order-type-option"
+            id="homeDeliveryOption"
+        >
+
+            <input
+                type="radio"
+                name="orderType"
+                value="homeDelivery"
+            >
+
+            <span class="order-type-icon">
+                🏠
+            </span>
+
+            <strong>
+                Home Delivery
+            </strong>
+
+        </label>
+
+
+    </div>
+
+
+    <!-- TABLE NUMBER -->
+
+    <div
+        id="tableBox"
+        class="order-extra-box"
+    >
+
+        <label>
+            🍽️ Table Number
+        </label>
+
+        <input
+            type="number"
+            id="tableNumber"
+            placeholder="Enter table number"
+            min="1"
+        >
+
+    </div>
+
+
+<!-- SAVED ADDRESSES -->
+<div id="savedAddressBox" class="order-extra-box">
+    <label>📍 Saved Address</label>
+    <div id="savedAddressList" class="saved-address-list">
+        <div style="color:#777;font-size:13px;">Loading saved addresses...</div>
+    </div>
+    <button type="button" id="addNewAddressBtn" class="map-close-btn">➕ Use a New Address</button>
+</div>
+
+<!-- HOME DELIVERY ADDRESS -->
+<div id="addressBox" class="order-extra-box">
+    <label>👤 Customer Name</label>
+
+    <input
+        type="text"
+        id="deliveryName"
+        placeholder="Enter customer name"
+        autocomplete="name"
+    >
+
+
+    <label style="margin-top:12px;">
+        📞 Phone Number
+    </label>
+
+    <input
+        type="tel"
+        id="deliveryPhone"
+        placeholder="Enter phone number"
+        autocomplete="tel"
+    >
+
+
+    <label style="margin-top:12px;">
+        📍 Place Name
+    </label>
+
+    <input
+        type="text"
+        id="deliveryPlace"
+        placeholder="Enter place name"
+    >
+
+
+    <label style="margin-top:12px;">
+        🏠 Near Landmark
+    </label>
+
+    <input
+        type="text"
+        id="deliveryLandmark"
+        placeholder="Enter nearby landmark"
+    >
+
+</div>
+
+
+<!-- DELIVERY LOCATION -->
+
+<div
+    id="locationBox"
+    class="order-extra-box"
+>
+
+    <label>
+        📍 Delivery Location
+    </label>
+
+    <div class="location-actions">
+
+        <button
+            type="button"
+            id="getLocationBtn"
+            class="location-btn"
+        >
+            📍 Use My Current Location (Optional)
+        </button>
+
+        <button
+            type="button"
+            id="selectMapLocationBtn"
+            class="location-btn map-location-btn"
+        >
+            🗺️ Select Location on Map
+        </button>
+
+    </div>
+
+    <div
+        id="mapLocationBox"
+        class="map-location-box"
+    >
+
+        <div class="map-help-text">
+            Search for a place below, or tap the map to select the delivery location.
+        </div>
+
+        <div class="map-search-box">
+
+            <div class="map-search-row">
+
+                <input
+                    type="text"
+                    id="mapSearchInput"
+                    class="map-search-input"
+                    placeholder="🔍 Search place, area or landmark..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="mapSearchBtn"
+                    class="map-search-btn"
+                >
+                    Search
+                </button>
+
+            </div>
+
+            <div
+                id="mapSearchResults"
+                class="map-search-results"
+            ></div>
+
+        </div>
+
+        <div
+            id="deliveryMap"
+            class="delivery-map"
+        ></div>
+
+        <button
+            type="button"
+            id="closeMapBtn"
+            class="map-close-btn"
+        >
+            ✕ Close Map
+        </button>
+
+    </div>
+
+    <p
+        id="locationStatus"
+        style="
+        margin-top:10px;
+        font-size:14px;
+        color:#666;
+        "
+    >
+        Location not selected
+    </p>
+
+    <div
+        id="distanceResult"
+        style="
+        margin-top:10px;
+        font-weight:600;
+        "
+    ></div>
+
+</div>
+
+
+<!-- PAYMENT METHOD -->
+
+<div class="payment-section">
+    <h3>💳 Payment Method</h3>
+
+    <div class="payment-options">
+
+        <label class="payment-option unavailable" id="upiPaymentOption">
+            <input type="radio" name="paymentMethod" value="UPI">
+            <span class="payment-icon">📱</span>
+            <strong>UPI</strong>
+            <small class="payment-note">Currently unavailable</small>
+        </label>
+       
+        <label class="payment-option unavailable" id="walletPaymentOption">
+            <input type="radio" name="paymentMethod" value="Wallet">
+            <span class="payment-icon">👛</span>
+            <strong>Wallets</strong>
+            <small class="payment-note">Currently unavailable</small>
+        </label>
+
+        <label class="payment-option unavailable" id="bankPaymentOption">
+            <input type="radio" name="paymentMethod" value="Bank Transfer">
+            <span class="payment-icon">🏦</span>
+            <strong>Bank Transfer</strong>
+            <small class="payment-note">Currently unavailable</small>
+        </label>
+
+        <label class="payment-option" id="codPaymentOption">
+            <input type="radio" name="paymentMethod" value="Cash on Delivery">
+            <span class="payment-icon">💵</span>
+            <strong>Cash on Delivery</strong>
+            <small class="payment-note">Pay when your order arrives</small>
+        </label>
+
+    </div>
+</div>
+
+<!-- TOTAL -->
+
+<div class="cart-total">
+    <div class="cart-summary-row"><span>Subtotal</span><strong>₹<span id="subtotalAmount">0</span></strong></div>
+    <div class="cart-summary-row"><span>Delivery Charge</span><strong>₹<span id="deliveryChargeAmount">0</span></strong></div>
+    <div class="cart-summary-row cart-grand-total"><span>Total</span><strong>₹<span id="totalAmount">0</span></strong></div>
+
+
+    <div
+        style="
+        display:flex;
+        gap:10px;
+        justify-content:center;
+        margin-top:15px;
+        flex-wrap:wrap;
+        "
+    >
+
+        <button id="backMenu">
+
+            ← Back To Menu
+
+        </button>
+
+
+        <button id="placeOrder">
+
+            Place Order
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+<script src="js/bottom-nav.js"></script>
+<script
+    type="module"
+    src="js/cart.js"
+></script>
+
+
+</body>
+
+</html>
